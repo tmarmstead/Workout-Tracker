@@ -1,21 +1,28 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const html = require('./routes/html_routes');
+const routes = require('./routes');
+
 
 const app = express();
 
 const PORT = process.env.PORT || 3000;
 
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
-app.use('/', html);
+app.use(routes);
 
-mongoose.connect('mongodb://localhost/workout', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workout', {
     useNewUrlParser: true,
-    useFindAndModify: false,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
 });
 
+const db = mongoose.connection
+db.on("error", (error) => console.log(error));
+db.once("open", () => console.log("Connected to Database"));
+
 app.listen(PORT, () => {
-    console.log(`app running on port: ${PORT}`);
+    console.log(`Router running on port: ${PORT}`);
 })
