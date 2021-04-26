@@ -1,7 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const routes = require('./routes');
+require('dotenv').config();
 
+console.log("!!!dotenv log!!!: ", process.env.MONGODB_URI)
 
 const app = express();
 
@@ -12,7 +14,7 @@ app.use(express.json());
 app.use(express.static('public'));
 app.use(routes);
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workout', {
+mongoose.connect(process.env.MONGODB_URI || process.env.CONNECTION, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
