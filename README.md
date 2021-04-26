@@ -1,5 +1,6 @@
 # Workout-Tracker
 
+![Screenshot (190)](https://user-images.githubusercontent.com/71151032/116119189-24534000-a68c-11eb-991c-624d4ed80d58.png)
 
   ## Table of Contents: 
   - [Description](#Description)
@@ -36,5 +37,5 @@
   https://github.com/tmarmstead/Workout-Tracker
 
   Deployed App:
-  https://tmarmstead.github.io/Workout-Tracker/
+  https://workout-tracker-tmarmstead.herokuapp.com
   
